@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------
+   Design tokens — dark premium (Apple-inspired finance app) is the
+   default look of the app. `.light` opts a user back into a light theme.
+--------------------------------------------------------------------- */
+:root {
+  --bg: #0e0e10;
+  --surface: #1a1a22;
+  --surface-2: #232330;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --ink: #ffffff;
+  --muted: #a1a1aa;
+
+  --brand: 216 96% 62%;      /* Blue — primary / navigation / FAB */
+  --brand-light: rgba(61, 139, 253, 0.16);
+  --brand-glow: rgba(61, 139, 253, 0.35);
+
+  --income: 158 65% 52%;     /* Green — thu */
+  --expense: 0 100% 68%;     /* Red — chi */
+  --warn: 29 100% 63%;       /* Orange — khoản vay / cảnh báo */
+
+  --glass-bg: rgba(26, 26, 34, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  color-scheme: dark;
+}
+
+.light {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eceef2;
+  --border: rgba(15, 15, 20, 0.07);
+  --border-strong: rgba(15, 15, 20, 0.14);
+  --ink: #101014;
+  --muted: #6b6b76;
+
+  --brand: 219 77% 54%;
+  --brand-light: rgba(47, 111, 228, 0.1);
+  --brand-glow: rgba(47, 111, 228, 0.25);
+
+  --income: 157 75% 36%;
+  --expense: 358 75% 59%;
+  --warn: 30 82% 51%;
+
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(15, 15, 20, 0.06);
+
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html, body {
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+}
+
+.blur-mask {
+  filter: blur(7px);
+  user-select: none;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
